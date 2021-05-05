@@ -36,20 +36,22 @@ class NumberListAdapter: RecyclerView.Adapter<NumberListAdapter.MyViewHolder>() 
             if (holder.timer != null) {
                 holder.timer!!.cancel();
             }
+            else {
 
-            var timer: Long = numberList.get(position).toLong()
-            timer = timer*1000;
-            holder.timer = object : CountDownTimer(100000000, 1000) {
-                var number = holder.binding.textViewNumber.text.toString().toInt()
-                override fun onTick(millisUntilFinished: Long) {
-                    number++
-                    holder.binding.textViewNumber.setText(number.toString())
-                }
+                var timer: Long = numberList.get(position).toLong()
+                timer = timer * 1000;
+                holder.timer = object : CountDownTimer(100000000, 1000) {
+                    var number = holder.binding.textViewNumber.text.toString().toInt()
+                    override fun onTick(millisUntilFinished: Long) {
+                        number++
+                        holder.binding.textViewNumber.setText(number.toString())
+                    }
 
-                override fun onFinish() {
-                    holder.binding.textViewNumber.setText("0")
-                }
-            }.start()
+                    override fun onFinish() {
+                        holder.binding.textViewNumber.setText("0")
+                    }
+                }.start()
+            }
         }
 
     }
