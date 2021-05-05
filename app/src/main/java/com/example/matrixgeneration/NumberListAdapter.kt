@@ -35,9 +35,9 @@ class NumberListAdapter: RecyclerView.Adapter<NumberListAdapter.MyViewHolder>() 
         holder.binding.textViewNumber.setOnClickListener {
             if (holder.timer != null) {
                 holder.timer!!.cancel();
+                holder.timer = null
             }
             else {
-
                 var timer: Long = numberList.get(position).toLong()
                 timer = timer * 1000;
                 holder.timer = object : CountDownTimer(100000000, 1000) {
