@@ -9,12 +9,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.matrixgeneration.databinding.FragmentMatrixGenerationBinding
 
 
 class MatrixGeneration : Fragment(R.layout.fragment_matrix_generation) {
     private lateinit var binding: FragmentMatrixGenerationBinding
     private lateinit var matrixGenerationViewModel: MatrixGenerationViewModel
+    private lateinit var adapter: NumberListAdapter
 
     companion object {
         val TAG = "Main"
@@ -33,7 +35,18 @@ class MatrixGeneration : Fragment(R.layout.fragment_matrix_generation) {
 
         matrixGenerationViewModel.getNumber().observe(viewLifecycleOwner, Observer {
             Log.d(TAG, "number value is "+it)
+            var a = mutableListOf<Int>()
+            for (i in 1..it*2) {
+                a.add(i)
+            }
+            adapter.setData(a)
         } )
+
+
+        //Adapter
+        adapter = NumberListAdapter()
+        binding.recyclerViewNumber.adapter = adapter
+        binding.recyclerViewNumber.layoutManager = LinearLayoutManager(context)
 
 
     }
@@ -45,6 +58,7 @@ class MatrixGeneration : Fragment(R.layout.fragment_matrix_generation) {
             } else {
                 var number = binding.textInputEditTextNumber.text.toString().trim()
                 matrixGenerationViewModel.number.setValue(number.toInt())
+                Toast.makeText(context, "Successful", Toast.LENGTH_SHORT).show()
             }
         }
     }
