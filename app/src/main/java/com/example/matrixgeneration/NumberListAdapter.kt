@@ -1,5 +1,6 @@
 package com.example.matrixgeneration
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +18,11 @@ class NumberListAdapter: RecyclerView.Adapter<NumberListAdapter.MyViewHolder>() 
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentNumber = numberList[position]
+        if (position%2==0) {
+            holder.binding.textViewNumber.setBackgroundResource(R.drawable.button_background_white)
+        } else {
+            holder.binding.textViewNumber.setBackgroundResource(R.drawable.button_background_black)
+        }
 
         holder.binding.textViewNumber.text = "0"
     }
