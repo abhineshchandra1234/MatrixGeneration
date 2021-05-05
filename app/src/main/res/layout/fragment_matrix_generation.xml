@@ -26,7 +26,7 @@
         app:startIconDrawable="@drawable/ic_touch">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditText"
+            android:id="@+id/textInputEditTextNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
@@ -48,6 +48,7 @@
 
 
     <TextView
+        android:id="@+id/buttonSubmit"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginBottom="116dp"
