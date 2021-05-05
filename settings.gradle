@@ -1,0 +1,2 @@
+rootProject.name = "MatrixGeneration"
+include ':app'
