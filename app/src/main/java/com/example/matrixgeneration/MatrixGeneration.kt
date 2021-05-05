@@ -49,3 +49,11 @@ class MatrixGeneration : Fragment(R.layout.fragment_matrix_generation) {
         }
     }
 }
+
+//fun main() {
+//    var a = mutableListOf<Int>()
+//    for (i in 1..1*2) {
+//        a.add(i)
+//    }
+//    println(a)
+//}
