@@ -9,14 +9,18 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.matrixgeneration.databinding.FragmentMatrixGenerationBinding
+import kotlin.properties.Delegates
 
 
 class MatrixGeneration : Fragment(R.layout.fragment_matrix_generation) {
     private lateinit var binding: FragmentMatrixGenerationBinding
     private lateinit var matrixGenerationViewModel: MatrixGenerationViewModel
     private lateinit var adapter: NumberListAdapter
+    private var gridLayoutManager: GridLayoutManager?= null
+
 
     companion object {
         val TAG = "Main"
@@ -35,6 +39,7 @@ class MatrixGeneration : Fragment(R.layout.fragment_matrix_generation) {
 
         matrixGenerationViewModel.getNumber().observe(viewLifecycleOwner, Observer {
             Log.d(TAG, "number value is "+it)
+            gridLayoutManager!!.spanCount = it ?: 1
             var a = mutableListOf<Int>()
             for (i in 1..it*2) {
                 a.add(i)
@@ -46,8 +51,12 @@ class MatrixGeneration : Fragment(R.layout.fragment_matrix_generation) {
         //Adapter
         adapter = NumberListAdapter()
         binding.recyclerViewNumber.adapter = adapter
-        binding.recyclerViewNumber.layoutManager = LinearLayoutManager(context)
+        //binding.recyclerViewNumber.layoutManager = LinearLayoutManager(context)
 
+
+        gridLayoutManager = GridLayoutManager(context,3, LinearLayoutManager.VERTICAL,false)
+
+        binding.recyclerViewNumber.layoutManager = gridLayoutManager
 
     }
 
