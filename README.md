@@ -9,3 +9,6 @@
 - Fragments
 - ViewModel && LiveData
 - ViewBinding
+
+## App Preview
+![picture alt](https://github.com/abhineshchandra1234/ComposePractice/blob/master/ComposePractice.jpg "Title is optional") 
