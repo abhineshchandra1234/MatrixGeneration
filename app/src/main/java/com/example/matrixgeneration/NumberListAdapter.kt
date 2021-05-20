@@ -1,17 +1,22 @@
 package com.example.matrixgeneration
 
 import android.os.CountDownTimer
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.matrixgeneration.databinding.RecyclerItemBinding
+import java.util.Collections.emptyList
+import kotlin.math.log
 
 
 class NumberListAdapter: RecyclerView.Adapter<NumberListAdapter.MyViewHolder>()  {
 
     var numberList = emptyList<Int>()
+    val TAG = "Main"
 
 
     inner class MyViewHolder(val binding: RecyclerItemBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -53,6 +58,17 @@ class NumberListAdapter: RecyclerView.Adapter<NumberListAdapter.MyViewHolder>() 
                 }.start()
             }
         }
+
+//        holder.binding.textViewNumber.setOnClickListener {
+//            val mainHandler = Handler(Looper.getMainLooper())
+//            mainHandler.post(object : Runnable {	//to run anything in loop after every 1 sec
+//                override fun run() {
+//                    //run anything here
+//                    Log.d(TAG, "this will print every 1 sec")
+//                    mainHandler.postDelayed(this, 1000)
+//                }
+//            })
+//        }
 
     }
 
