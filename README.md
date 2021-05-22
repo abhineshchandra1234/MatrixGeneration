@@ -9,6 +9,7 @@
 - Fragments
 - ViewModel && LiveData
 - ViewBinding
+- MVVM 
 
 ## App Preview
 ![picture alt](https://github.com/abhineshchandra1234/MatrixGeneration/blob/master/images/image1.jpeg "Title is optional") 
